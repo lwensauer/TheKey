@@ -23,3 +23,10 @@ Was wollen wir sehen:
 - Testabdeckung
 - Production-ready code - so wie du auch eine Aufgabe hier in der Firma lösen würdest
 - Abgabe bitte als github mit Anweisungen wie wir es testen können innerhalb von 1 Woche
+
+# Build and run
+
+To run this project you need to have .NET 6.0 runtime installed. Then clone (or download) this repository.
+Then open CLI and open folder with application. Then run from CLI with command:
+
+dotnet run --project .\BuberDinner.Api\
