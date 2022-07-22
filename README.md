@@ -29,4 +29,4 @@ Was wollen wir sehen:
 To run this project you need to have .NET 6.0 runtime installed. Then clone (or download) this repository.
 Then open CLI and open folder with application. Then run from CLI with command:
 
-dotnet run --project .\BuberDinner.Api\
+dotnet run --project .\TheKey.Api\
