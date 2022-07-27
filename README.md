@@ -3,22 +3,45 @@ Für jeden neuen Post werden die Anzahl der Wörter ermittelt. Diese Info wird a
 
 ## Testen 
 ### Voraussetzungen
-- .NET 6 SDK
-- https://nodejs.org/en/
+* .NET 6 SDK https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+* NodeJS https://nodejs.org/en/
 
 ### Starten vom backend:
 Im Verzeichnis `backend/TheKey.Backend` folgenden Befehl ausführen
-### `dotnet run`
+#### `dotnet run`
 
 ### Starten vom frontend:
 Im Verzeichnis `frontend` folgenden Befehl ausführen
-### `npm start`
+#### `npm start`
 Die Seite http://localhost:3000 wird zum Anzeigen im Browser geöffnet.
 
 ## Doku  
 
-### frontend
-
 ### backend
+
+#### Endpoints
+* WebSocket für Frontends https://localhost:44389/hubs/blog
+* [Swagger] über alle in-memory Blog-Posts (https://localhost:44389/swagger/v1/swagger.json)
+
+#### Verwendete Frameworks/Bibliotheken
+* [SignalR](https://docs.microsoft.com/de-de/aspnet/core/signalr/introduction?view=aspnetcore-6.0) 
+* [Swagger](https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-6.0&tabs=visual-studio)
+* [MediatR](https://github.com/jbogard/MediatR) - Mediator für CQRS beim Verarbeiten von Blog-Posts
+* [WordPressPCL](https://github.com/wp-net/WordPressPCL) - Client Bibilothek zum Aufruf der WordPress-API
+* [HTML Agility Pack](https://html-agility-pack.net/) - Parsen von HTML-Texten für den Word-Counter von Blog-Posts (sind immer mit HTML-Tags versehen)
+
+### frontend
+React-App erstellt mit Hilfe von [Create React App](https://github.com/facebook/create-react-app).
+Verbindung zum Server (Websocket zum Endpunkt https://localhost:44389/hubs/blog' ) erfolgt mit SignalR.
+
+Server schickt den Clients bei jedem Blog-Post ein Objekt mit folgenden Feldern:
+* Id - ID des Blog-Eintrages (int)
+* Message - Info über Anzahl Wörter des Blog-Postes
+* Title - Titel des Blog-Postes
+* WordCounterMap - Word Count Map ({“und”: 5, “der”: 3, ...}) über Blog-Post (ohne Titel)
+* Content = post.Content - Post, HTML formatiert
+
+Client zeigt diese Info an.
+
 
 
