@@ -25,6 +25,8 @@ public class PollBlogEntryBackgroundService : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        Console.WriteLine($"15 Sekunden warten bis zum Start der Verarbeitung...");
+        await Task.Delay(System.TimeSpan.FromSeconds(15), stoppingToken);
         while (!stoppingToken.IsCancellationRequested)
         {
             var client = new WordPressClient("https://internate.org/wp-json/");
