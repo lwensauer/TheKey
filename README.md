@@ -18,10 +18,13 @@ Die Seite http://localhost:3000 wird zum Anzeigen im Browser geöffnet.
 ## Doku  
 
 ### backend
+Es wird 15 Sekunden gewartet bis der erste Aufruf der der WordPress-API stattfindet.
+Nach jeden Verarbeitung eines Blog-Post wird eine Sekunden pausiert. 
 
 #### Endpoints
-* WebSocket für Frontends https://localhost:44389/hubs/blog
-* [Swagger] über alle in-memory Blog-Posts (https://localhost:44389/swagger/v1/swagger.json)
+* WebSocket für Frontends https://localhost:5001/hubs/blog
+* https://localhost:5001/blogentry Get-Endpunkte welcher alle in-memory Blog-Posts liefert
+* [Swagger](https://localhost:5001/swagger/v1/swagger.json)
 
 #### Verwendete Frameworks/Bibliotheken
 * [SignalR](https://docs.microsoft.com/de-de/aspnet/core/signalr/introduction?view=aspnetcore-6.0) - siehe Doku
@@ -44,4 +47,5 @@ Server schickt den Clients bei jedem Blog-Post ein Objekt mit folgenden Feldern:
 Client zeigt diese Info an.
 
 
+![GifCapture](https://user-images.githubusercontent.com/100235211/181298307-f1ba7bf9-ecf9-40ce-a800-9b9e9c41d050.gif)
 
