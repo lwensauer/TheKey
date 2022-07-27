@@ -20,8 +20,9 @@ Die Seite http://localhost:3000 wird zum Anzeigen im Browser geöffnet.
 ### backend
 
 #### Endpoints
-* WebSocket für Frontends https://localhost:44389/hubs/blog
-* [Swagger] über alle in-memory Blog-Posts (https://localhost:44389/swagger/v1/swagger.json)
+* WebSocket für Frontends https://localhost:5001/hubs/blog
+* https://localhost:5001/blogentry Get-Endpunkte welcher alle in-memory Blog-Posts liefert
+* [Swagger](https://localhost:5001/swagger/v1/swagger.json)
 
 #### Verwendete Frameworks/Bibliotheken
 * [SignalR](https://docs.microsoft.com/de-de/aspnet/core/signalr/introduction?view=aspnetcore-6.0) - siehe Doku
