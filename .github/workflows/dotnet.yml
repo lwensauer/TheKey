@@ -17,11 +17,9 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
-    - name: change dir
-      run: cd backend
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./backend/TheKey.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ./backend/TheKey.sln --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test ./backend/TheKey.sln --no-build --verbosity normal
