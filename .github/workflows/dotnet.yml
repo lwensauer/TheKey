@@ -18,7 +18,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: change dir
-      run: cd backend2
+      run: cd backend
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
