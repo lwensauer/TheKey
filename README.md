@@ -1,68 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Backend in C#/.Net welches periodisch neue Blog-Einträge von internate.org über die WordPress-API abruft.
+Für jeden neuen Post werden die Anzahl der Wörter ermittelt. Diese Info wird an Clients über SignalR(WebSocket) gesendet.
 
-## Available Scripts
+## Testen 
+### Voraussetzungen
+* .NET 6 SDK https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+* NodeJS https://nodejs.org/en/
 
-In the project directory, you can run:
+### Starten vom backend:
+Im Verzeichnis `backend/TheKey.Backend` folgenden Befehl ausführen
+#### `dotnet run`
 
-### `npm start`
+### Starten vom frontend:
+Im Verzeichnis `frontend` folgenden Befehl ausführen
+#### `npm start`
+Die Seite http://localhost:3000 wird zum Anzeigen im Browser geöffnet.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Doku  
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### backend
 
-### `npm test`
+#### Endpoints
+* WebSocket für Frontends https://localhost:44389/hubs/blog
+* [Swagger] über alle in-memory Blog-Posts (https://localhost:44389/swagger/v1/swagger.json)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Verwendete Frameworks/Bibliotheken
+* [SignalR](https://docs.microsoft.com/de-de/aspnet/core/signalr/introduction?view=aspnetcore-6.0) - siehe Doku
+* [Swagger](https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-6.0&tabs=visual-studio) - siehe Doku
+* [MediatR](https://github.com/jbogard/MediatR) - Mediator für CQRS beim Verarbeiten von Blog-Posts
+* [WordPressPCL](https://github.com/wp-net/WordPressPCL) - Client Bibilothek zum Aufruf der WordPress-API
+* [HTML Agility Pack](https://html-agility-pack.net/) - Parsen von HTML-Texten für den Word-Counter von Blog-Posts (sind immer mit HTML-Tags versehen)
 
-### `npm run build`
+### frontend
+React-App erstellt mit Hilfe von [Create React App](https://github.com/facebook/create-react-app).
+Verbindung zum Server (Websocket zum Endpunkt https://localhost:44389/hubs/blog' ) erfolgt mit SignalR.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Server schickt den Clients bei jedem Blog-Post ein Objekt mit folgenden Feldern:
+* Id - ID des Blog-Eintrages (int)
+* Message - Info über Anzahl Wörter des Blog-Postes
+* Title - Titel des Blog-Postes
+* WordCounterMap - Word Count Map ({“und”: 5, “der”: 3, ...}) über Blog-Post (ohne Titel)
+* Content = post.Content - Post, HTML formatiert
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Client zeigt diese Info an.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
