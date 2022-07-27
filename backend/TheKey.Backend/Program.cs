@@ -1,10 +1,11 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TheKey.Backend.Blog;
 using TheKey.Backend.Hubs;
 using TheKey.Backend.Persistence;
 using TheKey.Backend.WordCounter;
-using TheKey.Backend.Worker;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +15,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<IWordCounter>(new WordCounterFromHtmlInput());
-builder.Services.AddHostedService<Worker>();
+builder.Services.AddHostedService<PollBlogEntriesService>();
 builder.Services.AddSingleton<IBlogEntryRepository, BlogEntryRepository>();
+
+builder.Services.AddMediatR(typeof(Program).Assembly);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("ClientPermission", policy =>
