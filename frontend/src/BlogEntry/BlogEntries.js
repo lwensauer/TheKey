@@ -11,7 +11,7 @@ const BlogEntries = () => {
 
     useEffect(() => {
         const connection = new HubConnectionBuilder()
-            .withUrl('https://localhost:44389/hubs/blog')
+            .withUrl('https://localhost:5001/hubs/blog')
             .withAutomaticReconnect()
             .build();
 

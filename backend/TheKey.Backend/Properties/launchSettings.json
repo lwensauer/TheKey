@@ -17,10 +17,10 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Chatty.Api": {
+    "The.Backend": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "blogentries",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

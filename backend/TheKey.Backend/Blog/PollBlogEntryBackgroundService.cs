@@ -37,7 +37,7 @@ public class PollBlogEntryBackgroundService : BackgroundService
                 {
                     var isProcessed = await _mediator.Send(new NewBlogEntryCommand(post.Id, post.Title.Rendered, post.Content.Rendered));
                     if (isProcessed)
-                        Console.WriteLine($"{post.Id} processed");
+                        Console.WriteLine($"Post {post.Id} verarbeitet");
                 }
             }
             await Task.Delay(System.TimeSpan.FromMinutes(1), stoppingToken);
