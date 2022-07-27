@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<IWordCounter>(new WordCounterFromHtmlInput());
-builder.Services.AddHostedService<PollBlogEntriesService>();
+builder.Services.AddHostedService<PollBlogEntryBackgroundService>();
 builder.Services.AddSingleton<IBlogEntryRepository, BlogEntryRepository>();
 
 builder.Services.AddMediatR(typeof(Program).Assembly);

@@ -9,12 +9,12 @@ namespace TheKey.Backend.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class BlogEntriesController : ControllerBase
+public class BlogEntryController : ControllerBase
 {
     private readonly IHubContext<BlogHub, IBlogEntryClient> _chatHub;
     private readonly IBlogEntryRepository _blogEntryRepository;
 
-    public BlogEntriesController(IHubContext<BlogHub, IBlogEntryClient> chatHub, IBlogEntryRepository blogEntryRepository)
+    public BlogEntryController(IHubContext<BlogHub, IBlogEntryClient> chatHub, IBlogEntryRepository blogEntryRepository)
     {
         _chatHub = chatHub;
         _blogEntryRepository = blogEntryRepository;

@@ -8,4 +8,6 @@ public class BlogEntry
     public string Title { get; set; }
     public string Message { get; set; }
     public Dictionary<string, int> WordCounterMap { get; internal set; }
+
+    public string Content { get; set; }
 }

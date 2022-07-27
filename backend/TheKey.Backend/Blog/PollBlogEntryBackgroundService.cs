@@ -9,15 +9,17 @@ using WordPressPCL;
 
 namespace TheKey.Backend.Blog;
 
-public class PollBlogEntriesService : BackgroundService
+public class PollBlogEntryBackgroundService : BackgroundService
 {
     private readonly IBlogEntryRepository _blogEntryRepository;
 
     private ISender _mediator;
 
-    public PollBlogEntriesService(ISender mediator, IBlogEntryRepository blogEntryRepository)
+    public PollBlogEntryBackgroundService(ISender mediator, IBlogEntryRepository blogEntryRepository)
     {
         _mediator = mediator;
+
+        // Als Query (CQRS)
         _blogEntryRepository = blogEntryRepository;
     }
 
@@ -33,7 +35,7 @@ public class PollBlogEntriesService : BackgroundService
                 var postId = post.Id;
                 if (!_blogEntryRepository.AlreadyExists(postId))
                 {
-                    var isProcessed = await _mediator.Send(new BlogEntryCommand(post.Id, post.Title.Rendered, post.Content.Rendered));
+                    var isProcessed = await _mediator.Send(new NewBlogEntryCommand(post.Id, post.Title.Rendered, post.Content.Rendered));
                     if (isProcessed)
                         Console.WriteLine($"{post.Id} processed");
                 }
