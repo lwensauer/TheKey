@@ -24,8 +24,8 @@ Die Seite http://localhost:3000 wird zum Anzeigen im Browser geöffnet.
 * [Swagger] über alle in-memory Blog-Posts (https://localhost:44389/swagger/v1/swagger.json)
 
 #### Verwendete Frameworks/Bibliotheken
-* [SignalR](https://docs.microsoft.com/de-de/aspnet/core/signalr/introduction?view=aspnetcore-6.0) 
-* [Swagger](https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-6.0&tabs=visual-studio)
+* [SignalR](https://docs.microsoft.com/de-de/aspnet/core/signalr/introduction?view=aspnetcore-6.0) - siehe Doku
+* [Swagger](https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-6.0&tabs=visual-studio) - siehe Doku
 * [MediatR](https://github.com/jbogard/MediatR) - Mediator für CQRS beim Verarbeiten von Blog-Posts
 * [WordPressPCL](https://github.com/wp-net/WordPressPCL) - Client Bibilothek zum Aufruf der WordPress-API
 * [HTML Agility Pack](https://html-agility-pack.net/) - Parsen von HTML-Texten für den Word-Counter von Blog-Posts (sind immer mit HTML-Tags versehen)
