@@ -32,13 +32,13 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
 app.UseHttpsRedirection();
 app.UseCors("ClientPermission");
-app.UseRouting();
-app.UseAuthorization();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
