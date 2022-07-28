@@ -1,6 +1,9 @@
 Backend in C#/.Net welches periodisch neue Blog-Einträge von internate.org über die WordPress-API abruft.
 Für jeden neuen Post werden die Anzahl der Wörter ermittelt. Diese Info wird an Clients über SignalR(WebSocket) gesendet.
 
+## "Live"-Demo
+![GifCapture](https://user-images.githubusercontent.com/100235211/181298307-f1ba7bf9-ecf9-40ce-a800-9b9e9c41d050.gif)
+
 ## Testen 
 ### Voraussetzungen
 * .NET 6 SDK https://dotnet.microsoft.com/en-us/download/dotnet/6.0
@@ -46,6 +49,4 @@ Server schickt den Clients bei jedem Blog-Post ein Objekt mit folgenden Feldern:
 
 Client zeigt diese Info an.
 
-## "Live"-Demo
-![GifCapture](https://user-images.githubusercontent.com/100235211/181298307-f1ba7bf9-ecf9-40ce-a800-9b9e9c41d050.gif)
 
